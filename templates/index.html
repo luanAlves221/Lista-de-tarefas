@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+    <a href="/addNova"><button>Adicionar Nova Tarefa</button></a>
+
+    {% if tarefas %}
+        <ul>
+            {% for tarefa in tarefas %}
+                <li>
+                    {{ tarefa[1] }} - {{ tarefa[2] }} - 
+                    {% if tarefa[3] %}
+                        Concluída
+                    {% else %}
+                        Pendente
+                    {% endif %}
+                    <a href="/editar/{{ tarefa[0] }}"><button>Editar</button></a>
+                    <a href="/excluir/{{ tarefa[0] }}"><button>Excluir</button></a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nenhuma tarefa.</p>
+    {% endif %}
+</body>
+</html>
