@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar tarefa</title>
+</head>
+<body>
+    <h1>Editar tarefa</h1>
+    <p>Altere os campos abaixo para atualizar a tarefa.</p>
+    <form method="post" action="">
+        <label for="nome">Nome da tarefa:</label>
+        <input type="text" id="nome" name="nome" value="{{ tarefa[1] }}" required><br>
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" required>{{ tarefa[2] }}</textarea><br>
+        <button type="submit">Atualizar tarefa</button>
+    </form>
+    <a href="/"><button>cancelar</button></a>
+
+</body>
+</html>

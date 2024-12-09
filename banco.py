@@ -13,7 +13,6 @@ def tabela():
             nome TEXT NOT NULL,
             descricao TEXT NOT NULL,
             data DATETIME DEFAULT CURRENT_TIMESTAMP,
-            actualizar DATETIME DEFAULT CURRENT_TIMESTAMP,
             concluida BOOLEAN DEFAULT FALSE
         )
     """)

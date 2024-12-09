@@ -12,6 +12,7 @@ def index():
     cursor.execute("SELECT * FROM tarefas")
     tarefas = cursor.fetchall()
     conexao.close()
+    tarefas = [(id, nome, descricao, bool(concluida)) for id, nome, descricao, data, concluida in tarefas]
     return render_template("index.html", tarefas=tarefas)
 
 @app.route("/addNova", methods=["GET", "POST"])
@@ -48,6 +49,15 @@ def excluir(id):
     conexao = conectar()
     cursor = conexao.cursor()
     cursor.execute("DELETE FROM tarefas WHERE id = ?", (id,))
+    conexao.commit()
+    conexao.close()
+    return redirect(url_for("index"))
+
+@app.route("/concluir/<int:id>")
+def concluir(id):
+    conexao = conectar()
+    cursor = conexao.cursor()
+    cursor.execute("UPDATE tarefas SET concluida = 1 WHERE id = ?", (id,))
     conexao.commit()
     conexao.close()
     return redirect(url_for("index"))

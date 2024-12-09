@@ -13,13 +13,19 @@
         <ul>
             {% for tarefa in tarefas %}
                 <li>
-                    {{ tarefa[1] }} - {{ tarefa[2] }} - 
-                    {% if tarefa[3] %}
+                    <strong>Título:</strong> {{ tarefa[1] }}<br>
+                    <strong>Descrição:</strong> {{ tarefa[2] }}<br>
+                    <strong>Status:</strong> 
+                    {% if tarefa[3] is true %}
                         Concluída
                     {% else %}
                         Pendente
+                    {% endif %}<br>
+                    
+                    {% if tarefa[3] is not true %}
+                        <a href="/concluir/{{ tarefa[0] }}"><button>Concluir</button></a><br>
                     {% endif %}
-                    <a href="/editar/{{ tarefa[0] }}"><button>Editar</button></a>
+                    <a href="/editar/{{ tarefa[0] }}"><button>Editar</button></a><br>
                     <a href="/excluir/{{ tarefa[0] }}"><button>Excluir</button></a>
                 </li>
             {% endfor %}
